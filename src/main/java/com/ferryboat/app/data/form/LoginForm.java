@@ -1,0 +1,14 @@
+package com.ferryboat.app.data.form;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
+public class LoginForm {
+	
+	private String email;
+	
+	private String password;
+
+}
