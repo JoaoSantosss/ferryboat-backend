@@ -1,6 +1,6 @@
 package com.ferryboat.app.data.dto;
 
-import java.time.Instant;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -23,6 +23,6 @@ public class TripDTO {
     private Integer humanCapacityCount;
     private Integer vehicleCapacityCount;
     private TripStatus tripStatus;
-    private Instant createdAt;
-    private Instant updatedAt;
+    private BigDecimal price;
 }
+

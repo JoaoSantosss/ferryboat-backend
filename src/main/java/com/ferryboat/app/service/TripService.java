@@ -1,6 +1,7 @@
 package com.ferryboat.app.service;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -31,6 +32,7 @@ public class TripService {
         trip.setHumanCapacityCount(form.getHumanCapacityCount());
         trip.setVehicleCapacityCount(form.getVehicleCapacityCount());
         trip.setTripStatus(form.getTripStatus());
+        trip.setPrice(form.getPrice());
         trip.setCreatedAt(Instant.now());
         trip.setUpdatedAt(Instant.now());
         tripRepository.save(trip);
@@ -49,6 +51,7 @@ public class TripService {
         trip.setHumanCapacityCount(form.getHumanCapacityCount());
         trip.setVehicleCapacityCount(form.getVehicleCapacityCount());
         trip.setTripStatus(form.getTripStatus());
+        trip.setPrice(form.getPrice());
         trip.setUpdatedAt(Instant.now());
 
         tripRepository.save(trip);
@@ -68,6 +71,13 @@ public class TripService {
         return toDTO(trip);
     }
 
+    public List<TripDTO> getTripsByDate(LocalDate date) {
+        return tripRepository.findByTripDate(date)
+                .stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
+    }
+
     public void deleteTrip(UUID id) {
         Trip trip = tripRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Trip not found with id: " + id));
@@ -85,8 +95,7 @@ public class TripService {
         dto.setHumanCapacityCount(trip.getHumanCapacityCount());
         dto.setVehicleCapacityCount(trip.getVehicleCapacityCount());
         dto.setTripStatus(trip.getTripStatus());
-        dto.setCreatedAt(trip.getCreatedAt());
-        dto.setUpdatedAt(trip.getUpdatedAt());
+        dto.setPrice(trip.getPrice());
         return dto;
     }
 }

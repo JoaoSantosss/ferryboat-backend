@@ -1,5 +1,6 @@
 package com.ferryboat.app.entity;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -20,8 +21,8 @@ import lombok.Data;
 @Table(name = "trip_table")
 @Data
 public class Trip {
-	
-	@Id
+
+    @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
@@ -40,7 +41,8 @@ public class Trip {
     @Enumerated(EnumType.STRING)
     private TripStatus tripStatus;
 
+    private BigDecimal price;
+
     private Instant createdAt;
     private Instant updatedAt;
-
 }
