@@ -1,5 +1,6 @@
 package com.ferryboat.app.entity;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 import jakarta.persistence.Entity;
@@ -21,5 +22,6 @@ public class CarType {
 	
 	private String carType;
 	private Integer space;
+	private BigDecimal cost;
 
 }

@@ -77,6 +77,13 @@ public class TripService {
                 .map(this::toDTO)
                 .collect(Collectors.toList());
     }
+    
+    public List<TripDTO> getTripsByDateAndFrom(LocalDate date, String fromLocation) {
+        return tripRepository.findByDateAndFrom(date, fromLocation)
+                .stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
+    }
 
     public void deleteTrip(UUID id) {
         Trip trip = tripRepository.findById(id)

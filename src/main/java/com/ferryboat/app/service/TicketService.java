@@ -108,6 +108,7 @@ public class TicketService {
         dto.setTripTo(ticket.getTrip().getTo());
         dto.setStatus(ticket.getUserTripStatus());
         dto.setCarType(ticket.getCarType() != null ? ticket.getCarType().getCarType() : null);
+        dto.setTripDate(ticket.getTrip().getTripDate());
         dto.setCreatedAt(ticket.getCreatedAt());
         return dto;
     }

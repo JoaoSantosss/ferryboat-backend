@@ -13,11 +13,13 @@ public class UserDTO {
 	
 	private UUID id;
 	private String email;
+	private String name;
 	
 	public UserDTO(User user) {
 		super();
 		this.id = user.getId();
 		this.email = user.getEmail();
+		this.name = user.getName();
 	}
 	
 

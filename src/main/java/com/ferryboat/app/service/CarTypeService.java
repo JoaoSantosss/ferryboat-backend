@@ -25,6 +25,7 @@ public class CarTypeService {
         CarType carType = new CarType();
         carType.setCarType(dto.getCarType());
         carType.setSpace(dto.getSpace());
+        carType.setCost(dto.getCost());
 
         CarType saved = carTypeRepository.save(carType);
         return toResponse(saved);
@@ -70,6 +71,7 @@ public class CarTypeService {
         dto.setId(entity.getId());
         dto.setCarType(entity.getCarType());
         dto.setSpace(entity.getSpace());
+        dto.setCost(entity.getCost());
         return dto;
     }
 }

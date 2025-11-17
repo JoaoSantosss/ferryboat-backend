@@ -69,6 +69,16 @@ public class TripController {
         List<TripDTO> trips = tripService.getTripsByDate(date);
         return ResponseEntity.ok(trips);
     }
+    
+    @GetMapping("/date/from")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<List<TripDTO>> getTripsByDateAndFrom(
+            @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
+            @RequestParam("from") String fromLocation
+    ) {
+        List<TripDTO> trips = tripService.getTripsByDateAndFrom(date, fromLocation);
+        return ResponseEntity.ok(trips);
+    }
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")

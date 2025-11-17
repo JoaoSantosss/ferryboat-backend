@@ -14,7 +14,27 @@ import com.ferryboat.app.entity.Trip;
 @Repository
 public interface TripRepository extends JpaRepository<Trip, UUID>{
 	
-	@Query("SELECT t FROM Trip t WHERE CAST(t.tripDate AS date) = :date")
-    List<Trip> findByTripDate(@Param("date") LocalDate date);
+	@Query("""
+	        SELECT t FROM Trip t
+	        WHERE CAST(t.tripDate AS date) = :date
+	        ORDER BY t.tripDate ASC
+	    """)
+	    List<Trip> findByTripDate(@Param("date") LocalDate date);
+	
+	
+	@Query("""
+	        SELECT t FROM Trip t
+	        WHERE CAST(t.tripDate AS date) = :date
+	          AND t.from = :fromLocation
+	        ORDER BY t.tripDate ASC
+	    """)
+	    List<Trip> findByDateAndFrom(
+	            @Param("date") LocalDate date,
+	            @Param("fromLocation") String fromLocation
+	    );
 
 }
+	
+	
+
+
